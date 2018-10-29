@@ -81,6 +81,29 @@ public class Persona implements Serializable {
         this.celular = celular;
     }
 
+    public int getGenero() {
+        return genero;
+    }
+
+    public void setGenero(int genero) {
+        this.genero = genero;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public boolean getBeca() {
+        return beca;
+    }
+
+    public void setBeca(boolean beca) {
+        this.beca = beca;
+    }
 
     public List<String> getAsignaturas() {
         return asignaturas;

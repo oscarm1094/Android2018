@@ -21,7 +21,10 @@ import com.uce.utils.MyDatePicker;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -97,11 +100,9 @@ public class RegistroActivity extends AppCompatActivity {
                materias.add("Matematica");
            }
            int genero=0;
-           String beca=null;
+           boolean beca=false;
            if(swBeca.isChecked()){
-               beca="si";
-           }else{
-               beca="no";
+               beca=true;
            }
             if(radioMasculino.isChecked()){
                 genero=1;
@@ -109,15 +110,13 @@ public class RegistroActivity extends AppCompatActivity {
                 genero =0;
             }
 
-            StringBuilder sb = new StringBuilder();
-            sb.append(fecha.getYear()).append("/").append(fecha.getMonth()).append("/").append(fecha.getDayOfMonth());
-            
+            Date date = new Date(fecha.getYear(), fecha.getMonth(), fecha.getDayOfMonth());
 
            FileOutputStream out = new FileOutputStream(dataFile, true);
            ObjectOutputStream ost = new ObjectOutputStream(out);
            ost.writeObject(new Persona(usuario.getText().toString(), clave.getText().toString(),
                    nombre.getText().toString(), apellido.getText().toString(), email.getText().toString(),
-                   celular.getText().toString(),genero, sb.toString(), beca, materias));
+                   celular.getText().toString(),genero, date, beca, materias));
            ost.close();
            Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
            startActivity(intent);
