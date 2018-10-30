@@ -15,6 +15,7 @@ public class Persona implements Serializable {
     private Date fecha;
     private boolean beca;
     private List<String> asignaturas;
+    private String otraVariable;
 
     public Persona(){
 
